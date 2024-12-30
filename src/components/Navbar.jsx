@@ -19,14 +19,12 @@ const Navbar = () => {
     <nav className='bg-base-200'>
       <div className='navbar align-element'>
         <div className='navbar-start'>
-          {/* TITLE */}
           <NavLink
             to='/'
             className='hidden lg:flex font-bold text-3xl items-center'
           >
             ruma
           </NavLink>
-          {/* DROPDOWN */}
           <div className='dropdown'>
             <label tabIndex={0} className='btn btn-ghost lg:hidden'>
               <FaBarsStaggered className='h-6 w-6' />

@@ -1,8 +1,8 @@
-import React from 'react'
-import { useLoaderData, useLocation, useNavigate, useNavigation } from 'react-router-dom'
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom'
 
 const PaginationContainer = () => {
   const {meta} = useLoaderData()
+//  console.log(meta.pagination);
  
   const {pageCount, page} = meta.pagination;
   const pages = Array.from({length:pageCount}, (_,index)=>{
@@ -11,13 +11,13 @@ const PaginationContainer = () => {
 
   
   const {search,pathname} = useLocation()
+  console.log(search);
 
   const nav = useNavigate()
 
 
   const handlePageChange =(pageNumber)=>{
     const searchParams = new URLSearchParams(search)
-    console.log(searchParams);
     
     searchParams.set('page', pageNumber)
     nav(`${pathname}?${searchParams.toString()}`)

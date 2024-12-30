@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
@@ -19,8 +18,7 @@ const NavLinks = () => {
           if(url === 'orders' || url === 'checkout' && !user) return null
           return (
               <li key={id}>
-
-                <NavLink className='capitalize' to={url}>{text}</NavLink>
+                <NavLink className='capitalize font-semibold' to={url}>{text}</NavLink>
             </li>
         )
     })}

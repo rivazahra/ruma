@@ -1,12 +1,12 @@
-import React from 'react'
 import { customFetch, formatPrice } from '../utils'
 import { clearCart } from '../Features/cart/cartSlice'
 import { Form, redirect, useActionData } from 'react-router-dom'
 import FormInput from './FormInput'
 import SubmitBtn from './SubmitBtn'
+import { toast } from 'react-toastify'
 
 export const action =
-  (store) =>
+  (store,queryClient) =>
   async ({ request }) => {
     console.log(store)
 
@@ -25,22 +25,22 @@ export const action =
     }
 
     try {
-      const response = await customFetch.post(
-        '/orders',
-        { data: info },
+      const response = await customFetch.post('/orders',{ data: info },
         {
           headers: {
             Authorization: `Bearer ${user.token}`,
           },
         }
       )
+      queryClient.removeQueries(['orders']);
       store.dispatch(clearCart())
       return redirect('/orders')
     } catch (error) {
       console.log(error)
-      const errorMsg = error?.response?.data?.error?.message || 'there was an error placing your order'
+      const errorMsg = error?.response?.data?.error?.message ||
+       'there was an error placing your order'
+      toast.error(errorMsg);
       if (error?.response?.status === 401 || 403) return redirect('/login')
-
       return null
     }
   }
@@ -50,8 +50,7 @@ const CheckOutForm = () => {
   return (
     <Form
       method="post"
-      className="flex flex-col gap-y-4
-  "
+      className="flex flex-col gap-y-4"
     >
       <h4 className="font-medium text-xl">Shipping Information</h4>
       <FormInput label="first name" name="name" type="text" />

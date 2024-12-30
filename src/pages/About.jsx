@@ -1,25 +1,21 @@
+import about5 from '../assets/about5.jpg'
+import about4 from '../assets/about4.jpg'
 const About = () => {
   return (
     <>
-      <div className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center'>
-        <h1 className='text-4xl font-bold leading-none tracking-tight sm:text-6xl '>
-          We love
-        </h1>
-        <div className='stats bg-primary shadow'>
-          <div className='stat'>
-            <div className='stat-title text-primary-content text-4xl font-bold tracking-widest'>
-              comfy
-            </div>
-          </div>
+      <div className="grid sm:grid-cols-2 gap-8 mx-20  ">
+        <div className="flex flex-col justify-center gap-5">
+          <h1 className="font-bold text-5xl justify-center text-center">Design Your Perfect Home with Ruma.</h1>
+          <p className="text-center text-lg"> At Ruma, we believe that the right furniture can transform any space into a place of comfort, style, and inspiration. </p>
+        </div>
+        <img src={about4} alt="" className="rounded-box max-w-90  object-cover " />
+        <img src={about5} alt="" className="rounded-box w-90 object-cover" />
+        <div className="flex flex-col justify-center gap-3">
+          <h1 className="font-bold text-5xl justify-center text-center">Where Every Piece Tells a Story.</h1>
+          <p className="text-center text-lg"> Let us help you create a space that feels truly yours.</p>
         </div>
       </div>
-      <p className='mt-6 text-lg leading-8 max-w-2xl mx-auto'>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic veniam
-        odit, officiis eos mollitia alias, doloremque, aspernatur ratione
-        asperiores voluptas labore minus dolores reprehenderit corporis quos.
-        Assumenda molestias harum dignissimos?
-      </p>
     </>
-  );
-};
-export default About;
+  )
+}
+export default About

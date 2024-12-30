@@ -1,20 +1,34 @@
-import React, { useState } from 'react'
 import  {formatPrice, customFetch } from '../utils'
 import { Link, useLoaderData } from 'react-router-dom'
 import {useDispatch} from 'react-redux'
 import { addItem } from '../Features/cart/cartSlice'
+import { useState } from 'react'
 
-export const singleLoader = async ({ params }) => {
-  const response = await customFetch(`/products/${params.id}`)
-  // console.log(response);
 
-  return { product: response.data.data }
-}
+
+const singleProductQuery = (id) => {
+  return {
+    queryKey: ['singleProduct', id],
+    queryFn: () => customFetch(`/products/${id}`),
+  };
+};
+
+export const singleLoader =
+  (queryClient) =>
+  async ({ params }) => {
+    const response = await queryClient.ensureQueryData(
+      singleProductQuery(params.id)
+    );
+
+    return { product: response.data.data };
+  };
+
 
 const SingleProduct = () => {
    const { product } = useLoaderData();
-  const { image, title, price, description, colors, company } =
-  product.attributes;
+   console.log(product);
+   
+  const { image, title, price, description, colors, company } = product.attributes;
   const dollarsAmount = formatPrice(price);
   const [productColor, setProductColor] = useState(colors[0]);
   const [amount, setAmount] = useState(1);

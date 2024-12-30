@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+
 import { useLoaderData } from 'react-router-dom'
 import { BsFillGridFill, BsList } from 'react-icons/bs'
 import ProductsGrid from './ProductsGrid'
 import ProductList from './ProductList'
+import { useState } from 'react'
 
 const ProductContainer = () => {
   const { meta } = useLoaderData()
