@@ -1,8 +1,8 @@
-import React from 'react'
 import { Outlet, useNavigation } from 'react-router-dom'
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import Loading from '../components/Loading'
+import Footer from '../components/Footer'
 
 const HomeLayout = () => {
   const nav = useNavigation()
@@ -13,12 +13,11 @@ const HomeLayout = () => {
         <Navbar/>
       {loading ? (
         <Loading/>) : (
-        
-
       <section className='align-element py-20'>
       <Outlet />
       </section>
       )}
+      <Footer/>
     </>
   )
 }
