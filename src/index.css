@@ -7,3 +7,11 @@
         @apply mx-auto max-w-6xl px-8;
     }
 }
+
+html, body, #root {
+    @apply h-full flex flex-col;
+  }
+  
+  main {
+    @apply flex-1; /* Elemen utama mengambil ruang fleksibel */
+  }

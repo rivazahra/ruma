@@ -9,15 +9,18 @@ const HomeLayout = () => {
   const loading = nav.state === 'loading'
   return (
     <>
-        <Header/>
-        <Navbar/>
+      <Header />
+      <Navbar />
       {loading ? (
-        <Loading/>) : (
-      <section className='align-element py-20'>
-      <Outlet />
-      </section>
+        <Loading />
+      ) : (
+        <main>
+          <section className="align-element py-20">
+            <Outlet />
+          </section>
+        </main>
       )}
-      <Footer/>
+      <Footer />
     </>
   )
 }
