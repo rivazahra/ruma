@@ -3,6 +3,7 @@ import FormInput from '../components/FormInput'
 import SubmitBtn from '../components/SubmitBtn'
 import { customFetch } from '../utils'
 import { loginUser } from '../Features/user/userSlice'
+import { toast } from 'react-toastify'
 
 export const action =
   (store) =>
@@ -11,13 +12,13 @@ export const action =
     const data = Object.fromEntries(formData)
     try {
       const response = await customFetch.post('/auth/local', data)
-
       store.dispatch(loginUser(response.data))
+      toast.success('logged in successfully');
       return redirect('/')
     } catch (error) {
       console.log(error)
       const errorMessage = error?.response?.data?.error?.message || 'please double check your credentials'
-
+      toast.error(errorMessage);
       return errorMessage
     }
   }

@@ -44,6 +44,8 @@ export const loader = (store,queryClient)=>async({request})=>{
     console.log(error);
     const errorMessage = error?.response?.data?.error?.message ||
      'there was an error accessing your orders';
+     toast.error(errorMessage);
+   
     if(error?.response?.status === 401 || 403) return redirect('/login');
 
     return errorMessage

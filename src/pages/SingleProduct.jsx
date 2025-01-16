@@ -5,6 +5,7 @@ import { useDispatch } from 'react-redux'
 import { GoTriangleDown, GoTriangleUp } from 'react-icons/go'
 import { addItem } from '../Features/cart/cartSlice'
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const singleProductQuery = (id) => {
   return {
@@ -44,6 +45,7 @@ const SingleProduct = () => {
 
   const addToCart = () => {
     dispatch(addItem({ product: cartProduct }))
+    
   }
   
   return (
